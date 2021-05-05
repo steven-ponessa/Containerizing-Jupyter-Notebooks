@@ -1,4 +1,4 @@
-# Containerizing-Jupyter-Notebooks
+# Containerizing Jupyter Notebooks
 
 **Table of contents**
 
@@ -19,7 +19,7 @@
 ## Introduction
 This repository is a simple example of packaging Jupyter Notebooks and its required environment in a container to allow users to run them locally (without having a Python/Jupyter environment installed).
 
-<img alt="Jupyter" src="notebooks/img/jupyter.svg" width="10%" />Jupyter Notebooks are an open-source tool that enable data analysts and scientists to create documents that integrate executable codes, widgets, modules, formulas, and visualizations. Along with these features, Jupyter Notebooks allows for the addition of textual narratives. These narratives explain the content in a way that the document itself tells a comprehensive story. With Jupyter supporting over 40 programming languages, including Python, R, Julia, and Scala, task specific packages can be easily included in each notebook to support data acquisition, cleansing and normalization, analysis, visualization, and machine learning. With its impressive set of capabilities, Jupyter Notebooks have become ubiquitous within the data science community, but not beyond that. Why? As great as Jupyter is, it can be burdensome when it comes to sharing your work and collaborating with executives and non-data scientists.  Although Jupyter notebooks allow you to interactively experiment with different scenarios and/or present a story and allows business professionals to change pieces of the narrative to see what happens, it requires some degree of setup. Unfortunately, this setup bars many business professionals and executives use them.
+<img alt="Jupyter" src="notebooks/img/jupyter.png" width="10%" />Jupyter Notebooks are an open-source tool that enable data analysts and scientists to create documents that integrate executable codes, widgets, modules, formulas, and visualizations. Along with these features, Jupyter Notebooks allows for the addition of textual narratives. These narratives explain the content in a way that the document itself tells a comprehensive story. With Jupyter supporting over 40 programming languages, including Python, R, Julia, and Scala, task specific packages can be easily included in each notebook to support data acquisition, cleansing and normalization, analysis, visualization, and machine learning. With its impressive set of capabilities, Jupyter Notebooks have become ubiquitous within the data science community, but not beyond that. Why? As great as Jupyter is, it can be burdensome when it comes to sharing your work and collaborating with executives and non-data scientists.  Although Jupyter notebooks allow you to interactively experiment with different scenarios and/or present a story and allows business professionals to change pieces of the narrative to see what happens, it requires some degree of setup. Unfortunately, this setup bars many business professionals and executives use them.
 
 Containerization provides a way to deliver the analysis benefits of notebooks to non-technical audiences leaving the setup with the developer of the core code. Docker containers are an excellent way to package up an analysis. They can include the data you need, any scripts and code, and they’re guaranteed to work on everyone’s machine—no installation required.
 
@@ -41,7 +41,7 @@ If you’re using Windows or Mac, you can install Docker Desktop, or if you’re
 ## Directory Structure    
 Before we begin, go over the directory structure.
 
-<img alt="Directory Structure" src="notebooks/img/directory-structure.svg" width="50%" />
+<img alt="Directory Structure" src="notebooks/img/directory-structure.svg" width="30%" />
 
 <a id="3.1"></a>
 
@@ -71,7 +71,7 @@ The `css` and `js` directories contain cascading stylesheets and JavaScript libr
 ## Jupyter Docker Images
 The diagram below shows the various Jupyter Notebook Docker images:
 
-<img alt="Jupyter Docker Images" src="notebooks/img/jupyter-docker-images.svg" width="50%" />
+<img alt="Jupyter Docker Images" src="notebooks/img/jupyter-docker-images.svg" width="75%" />
 
 The Jupyter team maintains a set of Docker image definitions in this [GitHub repository](https://github.com/jupyter/docker-stacks). See [https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html) for additional details.
 
@@ -95,7 +95,7 @@ The Jupyter Docker image jupyter/datascience-notebook being used is functionally
 Then we can build our environment and deploy it to a Docker container with:
 
 ```
-  docker run -d -p 8888:8888 --name jupyter-container --env JUPYTER_TOKEN=jupyter_notebook_token --volume ~/Jupyter-Notebook/:/home/jovyan/work jupyter/datascience-notebook:latest
+  docker run -d -p 8888:8888 --name jupyter-container --env JUPYTER_TOKEN=jupyter_notebook_token --volume ~/Containerizing-Jupyter-Notebooks/:/home/jovyan/work jupyter/datascience-notebook:latest
 ```
 
 or
@@ -103,7 +103,7 @@ or
 ```
   docker run -d -p 8888:8888 --name jupyter-container \
      --env JUPYTER_TOKEN=jupyter_notebook_token \
-     --volume ~/Jupyter-Notebook/:/home/jovyan/work \
+     --volume ~/Containerizing-Jupyter-Notebooks/:/home/jovyan/work \
      jupyter/datascience-notebook:latest
 ```
 
