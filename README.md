@@ -19,7 +19,7 @@
 ## Introduction
 This repository is a simple example of packaging Jupyter Notebooks and its required environment in a container to allow users to run them locally (without having a Python/Jupyter environment installed).
 
-<img alt="Jupyter" src="notebooks/img/jupyter.png" width="10%" />Jupyter Notebooks are an open-source tool that enable data analysts and scientists to create documents that integrate executable codes, widgets, modules, formulas, and visualizations. Along with these features, Jupyter Notebooks allows for the addition of textual narratives. These narratives explain the content in a way that the document itself tells a comprehensive story. With Jupyter supporting over 40 programming languages, including Python, R, Julia, and Scala, task specific packages can be easily included in each notebook to support data acquisition, cleansing and normalization, analysis, visualization, and machine learning. With its impressive set of capabilities, Jupyter Notebooks have become ubiquitous within the data science community, but not beyond that. Why? As great as Jupyter is, it can be burdensome when it comes to sharing your work and collaborating with executives and non-data scientists.  Although Jupyter notebooks allow you to interactively experiment with different scenarios and/or present a story and allows business professionals to change pieces of the narrative to see what happens, it requires some degree of setup. Unfortunately, this setup bars many business professionals and executives use them.
+<img alt="Jupyter" src="notebooks/img/jupyter.png" width="10%" />Jupyter Notebooks are an open-source tool that enable data analysts and scientists to create documents that integrate executable codes, widgets, modules, formulas, and visualizations. Along with these features, Jupyter Notebooks allows for the addition of textual narratives. These narratives explain the content in a way that the document itself tells a comprehensive story. With Jupyter supporting over 40 programming languages, including Python, R, Julia, and Scala, task specific packages can be easily included in each notebook to support data acquisition, cleansing and normalization, analysis, visualization, and machine learning. With its impressive set of capabilities, Jupyter Notebooks have become ubiquitous within the data science community, but not beyond that. Why? As great as Jupyter is, it can be burdensome when it comes to sharing your work and collaborating with executives and non-data scientists.  Although Jupyter notebooks allow you to interactively experiment with different scenarios and/or present a story and allows business professionals to change pieces of the narrative to see what happens, it requires some degree of setup. Unfortunately, this setup bars many business professionals and executives from using them.
 
 Containerization provides a way to deliver the analysis benefits of notebooks to non-technical audiences leaving the setup with the developer of the core code. Docker containers are an excellent way to package up an analysis. They can include the data you need, any scripts and code, and they’re guaranteed to work on everyone’s machine—no installation required.
 
@@ -95,21 +95,15 @@ The Jupyter Docker image jupyter/datascience-notebook being used is functionally
 Then we can build our environment and deploy it to a Docker container with:
 
 ```
-  docker run -d -p 8888:8888 --name jupyter-container --env JUPYTER_TOKEN=jupyter_notebook_token --volume ~/Containerizing-Jupyter-Notebooks/:/home/jovyan/work jupyter/datascience-notebook:latest
+  docker run -d -p 8888:8888 --name jupyter-container --env JUPYTER_TOKEN=jupyter_notebook_token --volume ~/github/Containerizing-Jupyter-Notebooks/:/home/jovyan/work jupyter/datascience-notebook:latest
 ```
 
-or
-
-```
-  docker run -d -p 8888:8888 --name jupyter-container \
-     --env JUPYTER_TOKEN=jupyter_notebook_token \
-     --volume ~/Containerizing-Jupyter-Notebooks/:/home/jovyan/work \
-     jupyter/datascience-notebook:latest
-```
 
 To make things easier, we have set an environment variable, with the `–env` flag, for the token Jupyter notebooks should use for login. We’ll use this later. Also, because we’re specifying the token ourselves, we don’t need to see the console output (to copy and paste the token), so we also add the `-d` flag to run the container in detached mode in the background. To see the output from the container, we can just use docker logs jupyter-container or just look at the logs in Docker Desktop.
 
-We are using the `-p` flag to tell docker to connect port 8888 of the computer to port 8888 on the container. This allows us to connect to the Jupyter notebook server inside the container. We also use the `–name` flag to give us a convenient name for referring to this container in later commands. After you run this command, it will show you the url for connecting to the notebook server, and give you a token for logging in. Open a new browser window and go the url to test it out.
+We are using the `-p` flag to tell docker to connect port 8888 of the computer to port 8888 on the container. This allows us to connect to the Jupyter notebook server inside the container. We also use the `–name` flag to give us a convenient name for referring to this container in later commands. After you run this command, you can check the status of the running container through the Docker Desktop’s Dashboard.
+
+<img alt="Docker Desktop Dashboard" src="notebooks/img/docker-dashboard.svg" width="70%" />
 
 <a id="6.0"></a>
 ---
@@ -139,3 +133,6 @@ This will open the notebook interface to the default directory, where the user c
 > Note the `?token=jupyter_notebook_token`, this was set when we ran executed the `DOCKER run` command and set the environment variable (`--env JUPYTER_TOKEN=jupyter_notebook_token`). If this was omitted and you went to regular `http://localhost:8888/` and would need the token that is in the container output and enter it in the Notebook password screen.
 
 That’s it. At this point you should have an up and running Jupyter Notebook environment.
+
+<img alt="Opening the Jupyter Notebook" src="notebooks/img/opening-jupyter-notebook.png" width="70%" />
+
