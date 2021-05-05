@@ -15,3 +15,23 @@ If you’re using Windows or Mac, you can install Docker Desktop, or if you’re
 
 ## Directory Structure    
 Before we begin, go over the directory structure.
+
+![Directory Structure](notebooks/img/directory-structure.svg){: width="50%"}
+
+### modules directory  
+The `modules` directory is where the main Python (`*.py`) modules (code) are stored. These files do the heavy lifting and it’s what the developers spent all their time developing. This directory contains the `__init__.py` that is required to make Python treat the directory as a package. This prevents directories with a common name, such as string, unintentionally hiding valid modules that may occur later on the module search path.
+
+### notebooks directory
+The `notebooks` directory contains the Python Notebooks (`*.ipynb`) with the analysis and visualization that you want to be runnable for an audience who want to poke around. This directory also contains whatever raw data that may be required in the data folder and any images in the img directory.
+
+### css and js directories
+The `css` and `js` directories contain cascading stylesheets and JavaScript libraries, respectively, that may be used. Although Jupyter Notebooks do not natively support JavaScript, you can import Javascript into the environment and use it. This solution does just that, importing the d3, Data Driven Documents, libraries and uses it to build D3 dynamic trees from dataframes constructed in the notebook.
+
+### Files
+**requirements.txt** is a fil containing a list of items to be installed using `pip` install. **pip** is the standard package manager for Python. It allows you to install and manage additional packages that are not part of the Python standard library.
+
+**Dockerfile** is the file used to build and run the container either locally (Docker desktop) or in the cloud.
+
+
+## Jupyter Docker Images
+The diagram below shows the various Jupyter Notebook Docker images:
