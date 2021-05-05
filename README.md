@@ -9,3 +9,9 @@ Docker is a set of platform-as-a-service products that uses OS-level virtualizat
 Docker uses a special ‘Dockerfile’ that describes all steps to build an image of that environment. You can then deploy that image to a Docker ‘container’, which is like a virtual computer than runs on your machine or in the cloud.
 
 To get access to Jupyter Notebooks (or any of the many programming environments, servers, or databases that have been ‘dockerized’), we just need a Dockerfile. Jupyter has put together a collection of Dockerfiles for a variety of Jupyter notebooks and published them on Dockerhub.  This post will look at running Jupyter locally, using the DOCKER RUN command, and mounting a local directory as the source of the Jupyter Notebook. A prerequisite is that the user has Docker Desktop installed and running.
+
+## Pre-requisites    
+If you’re using Windows or Mac, you can install Docker Desktop, or if you’re using a Linux system you can install Docker using your package manager. You can find the instructions for your operating system at [Docker’s installation site](https://docs.docker.com/install).
+
+## Directory Structure    
+Before we begin, go over the directory structure.
